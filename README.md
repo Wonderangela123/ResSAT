@@ -9,3 +9,34 @@ conda env create -f environment.yml -n ressat_env
 conda activate ressat_env
 pip install -e .
 ```
+
+## Training
+```bash
+python ressat_train.py \
+    --data_dir ./data/ \
+    --result_dir ./results/ \
+    --section_num 2 \
+    --num_fourier 128 \
+    --sigma 1 \
+    --batch_size 32 \
+    --patch_size 224 \
+    --lr 5e-4 \
+    --dropout 0.3 \
+    --weight_decay 1e-6 \
+    --num_epochs 10 \
+    --patience 1 \
+    --num_workers 32
+
+## Predicting
+```bash
+python ressat_predict.py \
+    --data_dir ./data/ \
+    --result_dir ./results/ \
+    --section_num 2 \
+    --num_fourier 128 \
+    --sigma 1 \
+    --batch_size 32 \
+    --patch_size 224 \
+    --dropout 0.3 \
+    --num_workers 32
+```
