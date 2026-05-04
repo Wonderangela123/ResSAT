@@ -6,7 +6,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Spatial Gene Expression Prediction")
 
     # ── Dataset ──────────────────────────────────────────────────────────
-    parser.add_argument("--data_dir", type=str, default="./data/", help="Directory for QC'ed data") 
+    parser.add_argument("--data_dir", type=str, default="./data/", help="Directory for processed data") 
     parser.add_argument("--section_num", type=int, default=2, help="Number of sections")
 
     # ── Output ────────────────────────────────────────────────────────────
