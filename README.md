@@ -10,6 +10,9 @@ conda activate ressat_env
 pip install -e .
 ```
 
+## Downloading Dataset and Configuring Paths
+By default, the processed files can be downloaded from [here](https://drive.google.com/drive/folders/xxxxx) and will then be saved to `./data/`.
+
 ## Training
 ```bash
 python ressat_train.py \
