@@ -21,15 +21,15 @@ By default, the processed files can be downloaded from [here](https://drive.goog
 
 * `data/`
    * `Section_1/`
-      * `dataset.pkl` : list of `(patch, harmony_embedding)` tuples per spot, where `patch` is the H&E image patch (RGB, `2*radius × 2*radius × 3`) and `harmony_embedding` is the 50-dim batch-corrected PCA embedding used as the training label
-      * `locations.pkl` : list of normalized `(x, y)` coordinates in `[0, 1]` for each spot, in the same order as `dataset.pkl`
+      * `dataset.pkl` : list of `(patch, harmony_embedding)` tuples per spot, where `patch` is the H&E image patch and `harmony_embedding` is the 50-dim batch-corrected PCA embedding for gene expression.
+      * `locations.pkl` : list of normalized `(x, y)` coordinates in `[0, 1]` for each spot, in the same order as `dataset.pkl`.
    * `Section_2/`
       * (same structure as `Section_1/`)
-   * `pca_info.pkl` : dictionary containing PCA back-projection parameters
+   * `pca_info.pkl` : dictionary containing PCA parameters
       * `mean` : per-gene mean used in scaling, shape `(2000,)`
       * `std` : per-gene std used in scaling, shape `(2000,)`
       * `components` : PCA loadings, shape `(50, 2000)`
-      * `gene_names` : list of 2,000 HVG names (same order as columns in `components`)
+      * `gene_names` : list of 2,000 highly variable gene names (same order as columns in `components`)
    * `gene_list.csv` : list of the 2,000 highly variable genes selected globally across all sections
 
 `*` := with CLI (command line interface). Do `python ressat_train.py -h` to see all available options.
