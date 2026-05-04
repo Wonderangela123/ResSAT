@@ -11,7 +11,7 @@ pip install -e .
 ```
 
 ## Downloading Dataset and Configuring Paths
-By default, the processed files can be downloaded from [here](https://drive.google.com/drive/folders/xxxxx) and will then be saved to `./data/`.
+By default, the processed files can be downloaded from [here](https://drive.google.com/drive/folders/xxxxx) and will then be saved to `./data/`. Detailed preprocessing procedures (QC, normalization, HVG selection, PCA, and Harmony batch correction) are described in our paper.
 
 ## Training
 ```bash
