@@ -17,7 +17,7 @@ pip install -e .
 ## Downloading Dataset
 By default, the processed files can be downloaded from [here](https://drive.google.com/drive/folders/xxxxx) and will then be saved to `./data/`. Detailed preprocessing procedures are described in our paper.
 
-## Structure
+## Example Data Structure
 
 * `data/`
    * `Section_1/`
@@ -36,6 +36,8 @@ By default, the processed files can be downloaded from [here](https://drive.goog
 
 ## Training
 ```bash
+cd ressat/
+
 python ressat_train.py \
     --data_dir ./data/ \
     --result_dir ./results/ \
