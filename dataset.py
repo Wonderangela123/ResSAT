@@ -5,9 +5,6 @@ from torch.utils.data import Dataset
 from sklearn.neighbors import NearestNeighbors
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Spot-level records
-# ─────────────────────────────────────────────────────────────────────────────
 def build_spot_records(sections):
     records = []
     for sec_id, sec in enumerate(sections):
@@ -24,9 +21,6 @@ def build_spot_records(sections):
     return records
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PyTorch Dataset
-# ─────────────────────────────────────────────────────────────────────────────
 class HEPatchesDataset(Dataset):
     def __init__(self, records, patch_size):
         self.records = records
