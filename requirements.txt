@@ -1,3 +1,0 @@
-python=3.8
-conda install pytorch torchvision
-pip install numpy tqdm pickle-mixin
