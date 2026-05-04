@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ressat"
+version = "0.1.0"
+description = "ResSAT: prediction of spatial gene expression from H&E-stained histology images"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    {name = "ResSAT authors"}
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "torch",
+    "torchvision",
+    "tqdm",
+    "pillow"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ressat*"]
