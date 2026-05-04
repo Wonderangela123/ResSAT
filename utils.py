@@ -4,9 +4,17 @@ import torch
 
 def back_project(embedding, pca_info):
     """
-    50维 Harmony embedding → 2000维 log-norm 基因表达 before harmony but consider batch
-    embedding: torch.Tensor (N, 50)
-    返回:      torch.Tensor (N, 2000)
+    Project 50-dimensional Harmony-corrected embeddings back to the 2,000-HVG log-normalized expression space.
+    
+    Parameters
+    ----------
+    embedding : torch.Tensor
+        Tensor of shape (N, 50), containing Harmony-corrected representations.
+    
+    Returns
+    -------
+    torch.Tensor
+        Tensor of shape (N, 2000), containing reconstructed log-normalized gene expression profiles.
     """
     components = torch.tensor(pca_info["components"], dtype=torch.float32)  # (50, 2000)
     mean       = torch.tensor(pca_info["mean"],       dtype=torch.float32)  # (2000,)
@@ -34,21 +42,6 @@ def evaluate(y_pred, y_test, gene_names=None):
     paired = sorted(zip(gene_names, cor_list), key=lambda x: x[1], reverse=True)
 
     return cor_list, paired
-
-
-# def get_neighbor_feat(feat, section_ids, spot_ids, knn_graph, feat_dict):
-#     B, D = feat.shape
-#     k = knn_graph[0].shape[1]
-#     neighbor_feats = torch.zeros(B, k, D, device=feat.device)
-#     for i, (sec, spot) in enumerate(zip(section_ids.tolist(), spot_ids.tolist())):
-#         sec, spot = int(sec), int(spot)
-#         for j, ns in enumerate(knn_graph[sec][spot]):
-#             key = (sec, int(ns))
-#             if key in feat_dict:
-#                 neighbor_feats[i, j] = feat_dict[key].to(feat.device)
-#             else:
-#                 neighbor_feats[i, j] = feat[i]
-#     return neighbor_feats
 
 
 def save_results(y_pred, y_test, gene_names, result_dir):
