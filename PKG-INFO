@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: ressat
+Version: 0.1.0
+Summary: ResSAT: prediction of spatial gene expression from H&E-stained histology images
+Author: ResSAT authors
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: tqdm
+Requires-Dist: pillow
