@@ -6,7 +6,9 @@ ResSAT extracts visual features from the H&E patch through an image encoder and 
 ## Installation
 ```bash
 git clone https://github.com/Wonderangela123/ResSAT.git
+
 cd ResSAT/
+
 conda env create -f environment.yml -n ressat_env
 conda activate ressat_env
 pip install -e .
