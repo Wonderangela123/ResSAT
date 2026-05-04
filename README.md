@@ -26,7 +26,7 @@ python ressat_train.py \
     --num_epochs 10 \
     --patience 1 \
     --num_workers 32
-
+```
 ## Predicting
 ```bash
 python ressat_predict.py \
