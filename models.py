@@ -91,8 +91,7 @@ class SA_Feature(nn.Module):
         feat: (B, D)
         """
         B, D = feat.shape
-        
-        # 全局SA: batch内所有spot互相做self attention       
+            
         seq_norm = self.norm1(feat)
         Q = self.query(seq_norm)
         K = self.key(seq_norm)
@@ -135,17 +134,14 @@ class ResSAT:
         exp_name="ressat",
         gene_names=None,
     ):
-        # ── TORCH_HOME ──────────────────────────────────────
         torch_home = os.environ.get("TORCH_HOME", os.path.join(result_dir, ".cache", "torch"))
         os.environ["TORCH_HOME"] = torch_home
         os.makedirs(torch_home, exist_ok=True)
 
-        # ── Lazy imports ────────────────────────────────────
         from ressat.dataset import build_spot_records, HEPatchesDataset
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        # ── Config ──────────────────────────────────────────
         self.data_dir = data_dir
         self.result_dir = result_dir
         self.patch_size = patch_size
@@ -154,8 +150,6 @@ class ResSAT:
         self.dropout = dropout 
         self.gene_names = gene_names
 
-        # ── Build records + datasets ──────────────────
-        # Figure out output_dim from whichever sections are provided
         any_sections = train_sections or val_sections or test_sections
         first_section = any_sections[0]
         self.output_dim = len(first_section["data"][0][1])
@@ -172,17 +166,12 @@ class ResSAT:
             self.test_records = build_spot_records(test_sections)
             self.test_dataset = HEPatchesDataset(self.test_records, patch_size)
 
-        # ── Model ───────────────────────────────────────────
         self.model = ResNetSpatial(self.output_dim, num_fourier, sigma).to(self.device)
         self.sa_feature = SA_Feature(dim=self.model.feature_dim).to(self.device)
         self.pred_head = PredictionHead(self.model.feature_dim, self.output_dim, self.dropout).to(self.device)
 
-        # ── Save dir ────────────────────────────────────────
         self.save_dir = os.path.join(result_dir, exp_name)
 
-    # =================================================================
-    # FIT
-    # =================================================================
     def fit(
         self,
         num_epochs=100,
@@ -192,7 +181,6 @@ class ResSAT:
         weight_decay=1e-5,
     ):
 
-        # ── Version dir ─────────────────────────────────────
         version = 0
         vdir = os.path.join(self.save_dir, "lightning_logs", f"version_{version}")
         while os.path.exists(vdir):
@@ -212,8 +200,6 @@ class ResSAT:
         else:
             val_loader = None
 
-
-        # ── Optimizer ───────────────────────────────────────
         params = [
             {"params": self.model.backbone[0].parameters(), "lr": lr / 10},
             {"params": self.model.backbone[1].parameters(), "lr": lr / 8},
@@ -336,9 +322,6 @@ class ResSAT:
 
         print(f"Checkpoints in: {self.ckpt_dir}")
 
-    # =================================================================
-    # LOAD CHECKPOINT
-    # =================================================================
     def load_checkpoint(self, ckpt_path=None):
         """Load a checkpoint. If None, finds the latest best checkpoint."""
         if ckpt_path is None:
@@ -354,9 +337,6 @@ class ResSAT:
         self.sa_feature.load_state_dict(ckpt["sa_feature_state"])
         self.pred_head.load_state_dict(ckpt["pred_head_state"])
 
-    # =================================================================
-    # PREDICT
-    # =================================================================
     def predict(self, batch_size=32):
         """Run on test set. Call load_checkpoint() first.
         Returns (y_pred, y_true) as numpy arrays."""
