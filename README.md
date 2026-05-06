@@ -49,8 +49,8 @@ python ressat_train.py \
     --lr 5e-4 \
     --dropout 0.3 \
     --weight_decay 1e-6 \
-    --num_epochs 10 \
-    --patience 1 \
+    --num_epochs 100 \
+    --patience 10 \
     --num_workers 32
 ```
 ## Predicting
