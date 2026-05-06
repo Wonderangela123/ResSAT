@@ -41,7 +41,6 @@ def main():
         pca_info = pickle.load(f)
     y_pred = back_project(y_pred_pca, pca_info)   
     y_test = back_project(y_test_pca, pca_info)   
-    print("Harmony back-projection done → gene space")
    
     cor_list, paired = save_results(y_pred, y_test, gene_names, model.save_dir) 
     
