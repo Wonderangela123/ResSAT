@@ -15,7 +15,7 @@ pip install -e .
 ```
 
 ## Downloading Dataset
-The processed files can be downloaded from [here](https://doi.org/10.5281/zenodo.20031209) and will then be saved to `./data/`. Detailed preprocessing procedures are described in our paper.
+The processed example data can be downloaded from [here](https://doi.org/10.5281/zenodo.20031209) and will then be saved to `./data/`. Detailed data preprocessing procedures are described in our paper.
 
 ## Example Data Structure
 
