@@ -42,16 +42,6 @@ python ressat_train.py \
     --data_dir ./data/ \
     --result_dir ./results/ \
     --section_num 2 \
-    --num_fourier 128 \
-    --sigma 1 \
-    --batch_size 32 \
-    --patch_size 224 \
-    --lr 5e-4 \
-    --dropout 0.3 \
-    --weight_decay 1e-6 \
-    --num_epochs 100 \
-    --patience 10 \
-    --num_workers 32
 ```
 ## Predicting
 ```bash
@@ -59,10 +49,4 @@ python ressat_predict.py \
     --data_dir ./data/ \
     --result_dir ./results/ \
     --section_num 2 \
-    --num_fourier 128 \
-    --sigma 1 \
-    --batch_size 32 \
-    --patch_size 224 \
-    --dropout 0.3 \
-    --num_workers 32
 ```
