@@ -55,7 +55,6 @@ def main():
 
     print(f"Mean Pearson R ({len(gene_names)} genes) : {mean_cor:.4f}")
     print(f"Mean Pearson R (Top-50 HEG) : {mean_cor_top50:.4f}")
-    print(f"Top-5 genes : {top5_str}")
 
 if __name__ == "__main__":
     main()
