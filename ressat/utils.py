@@ -45,7 +45,6 @@ def evaluate(y_pred, y_test, gene_names=None):
 
 
 def save_results(y_pred, y_test, gene_names, result_dir):
-    # ── Evaluate ───────────────────────────────────
     cor_list, paired = evaluate(y_pred, y_test, gene_names=gene_names)
     
     torch.save(y_pred, os.path.join(result_dir, "y_pred.pt"))
