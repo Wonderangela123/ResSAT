@@ -41,12 +41,12 @@ cd ressat/
 python ressat_train.py \
     --data_dir ./data/ \
     --result_dir ./results/ \
-    --section_num 2 \
+    --section_num 2
 ```
 ## Predicting
 ```bash
 python ressat_predict.py \
     --data_dir ./data/ \
     --result_dir ./results/ \
-    --section_num 2 \
+    --section_num 2
 ```
